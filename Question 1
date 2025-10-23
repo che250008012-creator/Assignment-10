@@ -42,5 +42,4 @@ int main() {
         count = count + items[n].cost;
     }
     cout << "Average cost of all items is "<<count/8<<endl;
-    
 }
