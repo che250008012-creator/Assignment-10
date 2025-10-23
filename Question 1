@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Item {
+    int id;
+    string name;
+    float cost;
+};
+
+int main() {
+    Item items[8];
+    for (int i=0;i<8;i++){
+        cout<<"For item "<<i+1<<endl;
+        cout<<"Enter ID :"<<" ";
+        cin>>items[i].id;
+        cout<<"Enter Name :"<<" ";
+        cin>>items[i].name;
+        cout<<"Enter Cost :"<<" ";
+        cin>>items[i].cost;
+    }
+    for (int k=0;k<8-1;k++){
+        int max=k;
+        for (int m=k+1;m<8;m++){
+            if (items[m].cost>items[max].cost){
+                max=m;
+            }
+        }
+        if (max!=k){
+            Item temp=items[k];
+            items[k]=items[max];
+            items[max]=temp;
+        }
+    }
+    for (int j=0;j<8;j++){
+        cout<<items[j].id<<" ";
+        cout<<items[j].name<<" ";
+        cout<<items[j].cost<<endl;
+    }
+    float count=0;
+    for (int n=0;n<8;n++){
+        count = count + items[n].cost;
+    }
+    cout << "Average cost of all items is "<<count/8<<endl;
+    
+}
