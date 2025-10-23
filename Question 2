@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Marks{
+    float math;
+    float science;
+    float english;
+};
+
+struct Student{
+    int rollno;
+    string name;
+    Marks marks;
+};
+
+int main() {
+    Student stud[5];
+    float avg[5];
+    
+    for(int i=0; i<5; i++){
+        cout<<"Enter the details of Student "<<i+1<<" : "<<endl;
+        cout<<"Enter RollNo : "<<" ";
+        cin>>stud[i].rollno;
+        cout<<"Enter Name : "<<" ";
+        cin>>stud[i].name;
+        cout<<"Enter Math marks : "<<" ";
+        cin>>stud[i].marks.math;
+        cout<<"Enter Science marks : "<<" ";
+        cin>>stud[i].marks.science;
+        cout<<"Enter English marks : "<<" ";
+        cin>>stud[i].marks.english;
+        
+        avg[i]=(stud[i].marks.math + stud[i].marks.science + stud[i].marks.english)/3;
+    }
+    int max=0;
+    int min=0;
+    for (int j=1;j<5;j++){
+        if (avg[j]>avg[max]){
+            max=j;
+        }
+        if (avg[j]<avg[min]){
+            min=j;
+        }
+    }
+    cout<<"Student with highest Average: "<<stud[max].name<<endl;
+    cout<<"Student with lowest Average: "<<stud[min].name<<endl;
+}
