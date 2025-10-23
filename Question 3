@@ -1,0 +1,67 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Employee {
+    int id;
+    string name;
+    float salary;
+};
+
+int main(){
+    Employee emp[10];
+    for (int i=0; i<10; i++){
+        cout<<"Employee "<<i+1<<": "<<endl;
+        cout<<"Enter ID: "<<" ";
+        cin>>emp[i].id;
+        cout<<"Enter Name: "<<" ";
+        cin>>emp[i].name;
+        cout<<"Enter Salary: "<<" ";
+        cin>>emp[i].salary;
+    }
+    int choice;
+    do {
+        cout<<"Menu:"<<endl;
+        cout<<"1.Display all employee details"<<endl;
+        cout<<"2.Search by ID"<<endl;
+        cout<<"3.Increase Salary (below 30000 by 10%)"<<endl;
+        cout<<"4.Exit"<<endl;
+        cout<<"Enter a valid choice: ";
+        cin>>choice;
+        
+        if (choice==1) {
+            for (int i=0;i<10;i++){
+                cout<<emp[i].id<<" ";
+                cout<<emp[i].name<<" ";
+                cout<<emp[i].salary<<endl;
+            }
+        }
+        
+        else if (choice==2) {
+            int id;
+            cout<<"Enter ID: ";
+            cin>>id;
+            bool found=false;
+            for (int i=0;i<10;i++){
+                if(emp[i].id==id){
+                    cout<<emp[i].name<<" ";
+                    cout<<emp[i].salary<<endl;
+                    found=true;
+                }
+            }
+            if (!found){
+                cout<<"Employee not found."<<endl;
+            }
+        }
+        
+        else if (choice==3) {
+            for (int i=0;i<10;i++){
+                if (emp[i].salary<30000){
+                    emp[i].salary = emp[i].salary + emp[i].salary*0.10;
+                }
+            }
+            cout<<"Salaries updated."<<endl;
+        }
+    } while (choice!=4);
+    return 0;
+}
